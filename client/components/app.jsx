@@ -9,6 +9,8 @@ class App extends React.Component {
     this.state = {
       grades: []
     };
+    this.addNewGrade = this.addNewGrade.bind(this);
+    this.deleteAGrade = this.deleteAGrade.bind(this);
   }
 
   componentDidMount() {
@@ -44,6 +46,10 @@ class App extends React.Component {
         const newGrade = this.state.grades.concat(grade);
         this.setState({ grades: newGrade });
       });
+  }
+
+  deleteAGrade() {
+
   }
 
   render() {
