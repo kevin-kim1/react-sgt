@@ -18,7 +18,19 @@ class App extends React.Component {
   }
 
   getAverageGrade() {
-
+    const grades = this.state.grades;
+    const gradesLen = grades.length;
+    let avg;
+    let sum;
+    if (grades.length) {
+      for (let i = 0; i < gradesLen; i++) {
+        sum += grades.grade;
+        avg = sum / gradesLen;
+      }
+    } else {
+      avg = 'N/A';
+    }
+    return avg;
   }
 
   render() {
