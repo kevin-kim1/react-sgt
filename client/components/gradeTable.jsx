@@ -3,7 +3,7 @@ import Grade from './grade';
 
 export default function GradeTable(props) {
   const gradesArr = props.grades;
-  const rows = gradesArr.map(grade => <Grade key={grade.id} grade={grade}/>);
+  const rows = gradesArr.map(grade => <Grade key={grade.id} grade={grade} deleteAGrade={props.deleteAGrade}/>);
   return (
     <div className=" col-sm-9">
       <table id="table-content" className="table table-borderless">

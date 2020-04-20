@@ -58,7 +58,7 @@ class App extends React.Component {
         <Header avg={this.getAverageGrade()} />
         <hr></hr>
         <div className='d-flex'>
-          <GradeTable grades={this.state.grades} />
+          <GradeTable grades={this.state.grades} deleteAGrade={this.deleteAGrade} />
           <GradeForm addNewGrade={this.addNewGrade} />
         </div>
       </div>
