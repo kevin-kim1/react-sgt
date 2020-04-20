@@ -8,18 +8,45 @@ class App extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.getAllGrades();
+  }
+
+  getAllGrades() {
+    fetch('/api/grades')
+      .then(res => res.json())
+      .then(data => {
+        this.setState(prevState => ({
+          grades: data
+        }));
+        console.log(this.state.grades);
+      });
+    console.log(this.state.grades);
+  }
+
+  renderAllGrades() {
+    // this.state.grades.map((grade, index) => {
+    return (
+      <tr key="1">
+        <td>321321</td>
+        <td>12312</td>
+        <td>321321</td>
+      </tr>
+    );
+  }
+
   render() {
     return (
       <div>
         <div id="student-table-header" className="row mx-auto">
           <h2 className="col-sm-9 mt-2 mb-1">Student Grade Table</h2>
-          <h4 className="col-sm-3 mt-2 mb-1 pt-1">Average Grade <span id="grade-average" className="badge badge-secondary"></span></h4>
+          <h5 className="col-sm-3 mt-3 mb-1 pt-1">Average Grade <span id="grade-average" className="badge badge-secondary">34</span></h5>
         </div>
         <hr></hr>
         <div className="student-table mx-auto row">
           <table id="table-content" className="table table-borderless col-sm-9">
             <thead>
-              <tr className="table-responsive-lg">
+              <tr className="w-100">
                 <th>Name</th>
                 <th>Course</th>
                 <th>Grade</th>
@@ -27,8 +54,9 @@ class App extends React.Component {
               </tr>
             </thead>
             <tbody id="grade-table">
+              {this.renderAllGrades()}
             </tbody>
-            <p id="no-grades" className="hidden-msg">No Grades Recorded</p>
+            {/* <p id="no-grades" className="hidden-msg">No Grades Recorded</p> */}
           </table>
           <div className="col-sm-3 mt-1 pr-2">
             <h3>Add Grade</h3>
