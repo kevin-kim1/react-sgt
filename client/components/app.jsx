@@ -46,21 +46,6 @@ class App extends React.Component {
       });
   }
 
-  deleteAGrade(id) {
-    fetch(`/api/grade/${id}`, {
-      method: 'DELETE'
-    }).then(res => res.json())
-      .then(() => {
-        const newGrades = this.state.grade.slice();
-        for (let i = 0; i < newGrades.length; i++) {
-          if (newGrades[i].id === id) {
-            newGrades.slice(i);
-          }
-        }
-        this.setState({ grades: newGrades });
-      });
-  }
-
   render() {
     return (
       <div>
