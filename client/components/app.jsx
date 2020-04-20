@@ -11,15 +11,10 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getAllGrades();
-  }
-
-  getAllGrades() {
-    fetch('/api/grades')
-      .then(res => res.json())
-      .then(data => {
-        this.setState({ grades: data });
-      });
+    fetch('./api/grades')
+      .then(response => response.json())
+      .then(grades => this.setState({ grades }))
+      .catch(error => console.error('Request is not working:', error));
   }
 
   render() {
@@ -27,7 +22,7 @@ class App extends React.Component {
       <div>
         <Header />
         <hr></hr>
-        <GradeTable />
+        <GradeTable grades={ this.state.grades } />
       </div>
     );
   }
