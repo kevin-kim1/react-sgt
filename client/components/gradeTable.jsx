@@ -5,8 +5,8 @@ export default function GradeTable(props) {
   const gradesArr = props.grades;
   const rows = gradesArr.map(grade => <Grade key={grade.id} grade={grade} />);
   return (
-    <div className="student-table mx-auto row">
-      <table id="table-content" className="table table-borderless col-sm-12">
+    <div className=" col-sm-9">
+      <table id="table-content" className="table table-borderless">
         <thead>
           <tr className="w-100">
             <th>Name</th>
