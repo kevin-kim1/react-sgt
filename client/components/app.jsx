@@ -23,12 +23,12 @@ class App extends React.Component {
     let sum = 0;
     if (gradesLen) {
       for (let i = 0; i < gradesLen; i++) {
-        sum += parseInt(grades[i].grade);
+        sum += grades[i].grade;
       }
     } else {
       sum = '0';
     }
-    return parseInt(sum / gradesLen);
+    return sum / gradesLen;
   }
 
   render() {
