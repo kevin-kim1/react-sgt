@@ -17,6 +17,10 @@ class App extends React.Component {
       .catch(error => console.error('Request is not working:', error));
   }
 
+  getAverageGrade() {
+
+  }
+
   render() {
     return (
       <div>
