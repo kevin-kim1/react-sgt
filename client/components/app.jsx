@@ -26,7 +26,7 @@ class App extends React.Component {
         sum += parseInt(grades[i].grade);
       }
     } else {
-      sum = 'N/A';
+      sum = '0';
     }
     return parseInt(sum / gradesLen);
   }
