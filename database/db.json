@@ -23,6 +23,18 @@
       "course": "Dev Ops",
       "grade": "100",
       "id": 33
+    },
+    {
+      "name": "r120_kKim",
+      "course": "HTML",
+      "grade": "100",
+      "id": 34
+    },
+    {
+      "name": "kevin kim",
+      "course": "Dev Ops",
+      "grade": "100",
+      "id": 35
     }
   ]
 }
