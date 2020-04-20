@@ -58,7 +58,7 @@ export default class GradeForm extends React.Component {
             <input name="grade" type="text" className="form-control" value={grade} onChange={this.handleChange} placeholder="Student Grade"/>
           </div>
           <button id="btn-form" type="submit" className="btn btn-success mr-2">Add</button>
-          <button type="submit" className="btn btn-light btn-outline-secondary btn-cancel" onClick={this.handleReset}>Cancel</button>
+          <button type="reset" className="btn btn-light btn-outline-secondary btn-cancel" onClick={this.handleReset}>Cancel</button>
         </form>
       </div>
     );

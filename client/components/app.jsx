@@ -42,7 +42,6 @@ class App extends React.Component {
     }).then(res => res.json())
       .then(grade => {
         const newGrade = this.state.grades.concat(grade);
-        newGrade.grade = parseInt(newGrade.grade);
         this.setState({ grades: newGrade });
       });
   }
