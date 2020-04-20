@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './header';
 import GradeTable from './gradeTable';
+import GradeForm from './gradeForm';
 
 class App extends React.Component {
   constructor(props) {
@@ -23,12 +24,27 @@ class App extends React.Component {
     let sum = 0;
     if (gradesLen) {
       for (let i = 0; i < gradesLen; i++) {
-        sum += grades[i].grade;
+        sum += parseInt(grades[i].grade);
       }
     } else {
       sum = '0';
     }
-    return sum / gradesLen;
+    return parseInt(sum / gradesLen);
+  }
+
+  addNewGrade(grade) {
+    fetch('/api/grades', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(grade)
+    }).then(res => res.json())
+      .then(grade => {
+        const newGrade = this.state.grades.concat(grade);
+        newGrade.grade = parseInt(newGrade.grade);
+        this.setState({ grades: newGrade });
+      });
   }
 
   render() {
@@ -36,7 +52,10 @@ class App extends React.Component {
       <div>
         <Header avg={this.getAverageGrade()} />
         <hr></hr>
-        <GradeTable grades={ this.state.grades } />
+        <div className='d-flex'>
+          <GradeTable grades={this.state.grades} />
+          <GradeForm addNewGrade={this.addNewGrade} />
+        </div>
       </div>
     );
   }
