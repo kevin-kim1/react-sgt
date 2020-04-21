@@ -16,9 +16,11 @@ export default function GradeTable(props) {
           </tr>
         </thead>
         <tbody id="grade-table">
+          {/* {gradesArr.length ? rows : <tr className='hide-row'></tr>} */}
           {rows}
         </tbody>
       </table>
+      <h5 className={`${!gradesArr.length ? 'hidden-msg' : 'hide-row'}`}>No Grades Recorded</h5>
     </div>
   );
 }
