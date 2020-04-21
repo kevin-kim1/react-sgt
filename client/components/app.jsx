@@ -9,6 +9,8 @@ class App extends React.Component {
     this.state = {
       grades: []
     };
+    this.addNewGrade = this.addNewGrade.bind(this);
+    this.deleteAGrade = this.deleteAGrade.bind(this);
   }
 
   componentDidMount() {
@@ -46,13 +48,31 @@ class App extends React.Component {
       });
   }
 
+  deleteAGrade(userId) {
+    const newGrades = this.state.grades;
+    fetch(`/api/grades/${userId}`, {
+      method: 'DELETE'
+    })
+      .then(res => res.json())
+      .then(() => {
+        for (let i = 0; i < newGrades.length; i++) {
+          if (newGrades[i].id === userId) {
+            newGrades.splice(i);
+          }
+        }
+        this.setState({
+          grades: newGrades
+        });
+      });
+  }
+
   render() {
     return (
       <div>
         <Header avg={this.getAverageGrade()} />
         <hr></hr>
         <div className='d-flex'>
-          <GradeTable grades={this.state.grades} />
+          <GradeTable grades={this.state.grades} deleteAGrade={this.deleteAGrade} />
           <GradeForm addNewGrade={this.addNewGrade} />
         </div>
       </div>
